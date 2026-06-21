@@ -1,38 +1,29 @@
 name: Sync Submodules
 on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
+  workflow_dispatch: # We only need this to run when you click the button
 
-# This grants the action permission to actually save files to your repo
 permissions:
   contents: write
 
 jobs:
-  sync:
+  build-submodules:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          submodules: true
 
-      - name: Update Submodules
+      - name: Force Add Submodules
         run: |
-          git submodule update --init --recursive --remote
-
-      - name: Commit and Push Changes
-        run: |
-          # Set up a bot account to make the commit
+          # 1. Set up the bot account
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Add the new submodule pointers
-          git add .
+          # 2. Force Git to create the actual folder pointers
+          git submodule add --force https://github.com/SREFX/S2400-sidechain.git S2400-sidechain
+          git submodule add --force https://github.com/SREFX/S2400-sidechain-recv.git S2400-sidechain-recv
           
-          # Commit the changes (or skip if nothing changed to prevent errors)
-          git commit -m "Auto-sync submodules" || echo "No changes to commit"
-          
-          # Push back to your repository
+          # 3. Save and push
+          git commit -m "Initialize submodules directly" || echo "No changes to commit"
           git push
