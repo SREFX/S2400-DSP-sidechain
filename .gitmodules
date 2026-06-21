@@ -1,0 +1,7 @@
+[submodule "S2400-sidechain"]
+    path = S2400-sidechain
+    url = https://github.com/SREFX/S2400-sidechain.git
+
+[submodule "S2400-sidechain-recv"]
+    path = S2400-sidechain-recv
+    url = https://github.com/SREFX/S2400-sidechain-recv.git
