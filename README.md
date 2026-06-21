@@ -19,4 +19,5 @@ You can find the code for this in the main .cpp files for each plugin. It's fram
 
 ### To-Do
 Move envelope controls to the receive, allowing different envelope attack, release, depth etc. at each destination.
+
 Get both send and receive to define 4 x chunks of RAM, create selection param in both plugins. This allows multiple instances. e.g. Send 1 set to chunk A, send 2 set to chunk B, recv 1 set to chunk B, recv 2 set to chunk A.
