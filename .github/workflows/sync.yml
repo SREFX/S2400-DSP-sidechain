@@ -1,0 +1,19 @@
+name: Sync Submodules
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: # Allows you to run this manually
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Master
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: true
+
+      - name: Update Submodules
+        run: |
+          git submodule update --init --recursive --remote
