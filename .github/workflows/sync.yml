@@ -2,13 +2,17 @@ name: Sync Submodules
 on:
   push:
     branches: [ main ]
-  workflow_dispatch: # Allows you to run this manually
+  workflow_dispatch:
+
+# This grants the action permission to actually save files to your repo
+permissions:
+  contents: write
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Master
+      - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -17,3 +21,18 @@ jobs:
       - name: Update Submodules
         run: |
           git submodule update --init --recursive --remote
+
+      - name: Commit and Push Changes
+        run: |
+          # Set up a bot account to make the commit
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Add the new submodule pointers
+          git add .
+          
+          # Commit the changes (or skip if nothing changed to prevent errors)
+          git commit -m "Auto-sync submodules" || echo "No changes to commit"
+          
+          # Push back to your repository
+          git push
