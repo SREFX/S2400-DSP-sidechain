@@ -1,6 +1,15 @@
 # S2400-DSP-sidechain
 lv2 plugins for cross-bus sidechaining on the Isla S2400 DSP card.
 
+### Installation
+Download the zip and unzip it.
+Put your S2400 in USB MSC mode connected to your computer.
+Put the contents of the zip (two .lv2 folders) in the dspcard folder of the SD card.
+Eject the S2400 from your computer.
+Sync your plugins on the S2400.
+Restart the S2400.
+SCSend and SCReceive should now be available in the fxxxxx vendor folder when adding a plugin to a dsp card bus.
+
 ### S2400-sidechain-lv2.zip
 The send and receive plugins compiled in lv2 format. Just place this in the folder on the SD card and sync as normal.
 
