@@ -1,6 +1,10 @@
 # S2400-DSP-sidechain
 lv2 plugins for cross-bus sidechaining on the Isla S2400 DSP card.
 
+# Current version - 0.1.5 - not zipped
+Changelist:
+Moved all envelope controls from send plugin to receive plugin, allowing each receive to have its own sidechain settings.
+
 ### Installation
 Download the zip and unzip it.
 
