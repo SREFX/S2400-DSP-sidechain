@@ -1,12 +1,19 @@
 # S2400-DSP-sidechain
 lv2 plugins for cross-bus sidechaining on the Isla S2400 DSP card.
 
-# Current version - 0.1.5 - not zipped
+# Current version - 0.1.5(SCSend) 0.1.6(SCReceive)
 Changelist:
 
 Moved all envelope controls from send plugin to receive plugin, allowing each receive to have its own sidechain settings.
 
+Added Makeup Gain parameter - up to 12dB of makeup gain.
+
+Added Envelope Curve parameter - set the curve of the sidechain envelope from logarithmic to linear to exponential for more pumping etc.
+
 Fixed volume bug when changing buses (I think).
+
+Changed threshold to be displayed in dB.
+
 
 ### Installation
 Download the zip and unzip it.
